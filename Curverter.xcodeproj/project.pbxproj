@@ -1,0 +1,449 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CC2666F31F988C6200A519B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2666F21F988C6200A519B4 /* AppDelegate.swift */; };
+		CC2666F51F988C6200A519B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2666F41F988C6200A519B4 /* ViewController.swift */; };
+		CC2666F81F988C6200A519B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC2666F61F988C6200A519B4 /* Main.storyboard */; };
+		CC2666FA1F988C6200A519B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC2666F91F988C6200A519B4 /* Assets.xcassets */; };
+		CC2666FD1F988C6200A519B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC2666FB1F988C6200A519B4 /* LaunchScreen.storyboard */; };
+		CC2667081F988C6200A519B4 /* CurverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2667071F988C6200A519B4 /* CurverterTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CC2667041F988C6200A519B4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC2666E71F988C6200A519B4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC2666EE1F988C6200A519B4;
+			remoteInfo = Curverter;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CC2666EF1F988C6200A519B4 /* Curverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Curverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC2666F21F988C6200A519B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CC2666F41F988C6200A519B4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CC2666F71F988C6200A519B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CC2666F91F988C6200A519B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CC2666FC1F988C6200A519B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CC2666FE1F988C6200A519B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC2667031F988C6200A519B4 /* CurverterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurverterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC2667071F988C6200A519B4 /* CurverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurverterTests.swift; sourceTree = "<group>"; };
+		CC2667091F988C6200A519B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CC2666EC1F988C6200A519B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC2667001F988C6200A519B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CC2666E61F988C6200A519B4 = {
+			isa = PBXGroup;
+			children = (
+				CC2666F11F988C6200A519B4 /* Curverter */,
+				CC2667061F988C6200A519B4 /* CurverterTests */,
+				CC2666F01F988C6200A519B4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CC2666F01F988C6200A519B4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CC2666EF1F988C6200A519B4 /* Curverter.app */,
+				CC2667031F988C6200A519B4 /* CurverterTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CC2666F11F988C6200A519B4 /* Curverter */ = {
+			isa = PBXGroup;
+			children = (
+				CC2666F21F988C6200A519B4 /* AppDelegate.swift */,
+				CC2666F41F988C6200A519B4 /* ViewController.swift */,
+				CC2666F61F988C6200A519B4 /* Main.storyboard */,
+				CC2666F91F988C6200A519B4 /* Assets.xcassets */,
+				CC2666FB1F988C6200A519B4 /* LaunchScreen.storyboard */,
+				CC2666FE1F988C6200A519B4 /* Info.plist */,
+			);
+			path = Curverter;
+			sourceTree = "<group>";
+		};
+		CC2667061F988C6200A519B4 /* CurverterTests */ = {
+			isa = PBXGroup;
+			children = (
+				CC2667071F988C6200A519B4 /* CurverterTests.swift */,
+				CC2667091F988C6200A519B4 /* Info.plist */,
+			);
+			path = CurverterTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CC2666EE1F988C6200A519B4 /* Curverter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC26670C1F988C6200A519B4 /* Build configuration list for PBXNativeTarget "Curverter" */;
+			buildPhases = (
+				CC2666EB1F988C6200A519B4 /* Sources */,
+				CC2666EC1F988C6200A519B4 /* Frameworks */,
+				CC2666ED1F988C6200A519B4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Curverter;
+			productName = Curverter;
+			productReference = CC2666EF1F988C6200A519B4 /* Curverter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CC2667021F988C6200A519B4 /* CurverterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC26670F1F988C6200A519B4 /* Build configuration list for PBXNativeTarget "CurverterTests" */;
+			buildPhases = (
+				CC2666FF1F988C6200A519B4 /* Sources */,
+				CC2667001F988C6200A519B4 /* Frameworks */,
+				CC2667011F988C6200A519B4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CC2667051F988C6200A519B4 /* PBXTargetDependency */,
+			);
+			name = CurverterTests;
+			productName = CurverterTests;
+			productReference = CC2667031F988C6200A519B4 /* CurverterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CC2666E71F988C6200A519B4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "Илья Крупко";
+				TargetAttributes = {
+					CC2666EE1F988C6200A519B4 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+					CC2667021F988C6200A519B4 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CC2666EE1F988C6200A519B4;
+					};
+				};
+			};
+			buildConfigurationList = CC2666EA1F988C6200A519B4 /* Build configuration list for PBXProject "Curverter" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CC2666E61F988C6200A519B4;
+			productRefGroup = CC2666F01F988C6200A519B4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CC2666EE1F988C6200A519B4 /* Curverter */,
+				CC2667021F988C6200A519B4 /* CurverterTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CC2666ED1F988C6200A519B4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC2666FD1F988C6200A519B4 /* LaunchScreen.storyboard in Resources */,
+				CC2666FA1F988C6200A519B4 /* Assets.xcassets in Resources */,
+				CC2666F81F988C6200A519B4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC2667011F988C6200A519B4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CC2666EB1F988C6200A519B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC2666F51F988C6200A519B4 /* ViewController.swift in Sources */,
+				CC2666F31F988C6200A519B4 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC2666FF1F988C6200A519B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC2667081F988C6200A519B4 /* CurverterTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CC2667051F988C6200A519B4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CC2666EE1F988C6200A519B4 /* Curverter */;
+			targetProxy = CC2667041F988C6200A519B4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CC2666F61F988C6200A519B4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC2666F71F988C6200A519B4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CC2666FB1F988C6200A519B4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC2666FC1F988C6200A519B4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CC26670A1F988C6200A519B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CC26670B1F988C6200A519B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CC26670D1F988C6200A519B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X3AK29HB99;
+				INFOPLIST_FILE = Curverter/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ilya.krupko.Curverter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CC26670E1F988C6200A519B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X3AK29HB99;
+				INFOPLIST_FILE = Curverter/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ilya.krupko.Curverter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CC2667101F988C6200A519B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X3AK29HB99;
+				INFOPLIST_FILE = CurverterTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ilya.krupko.CurverterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Curverter.app/Curverter";
+			};
+			name = Debug;
+		};
+		CC2667111F988C6200A519B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X3AK29HB99;
+				INFOPLIST_FILE = CurverterTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ilya.krupko.CurverterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Curverter.app/Curverter";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CC2666EA1F988C6200A519B4 /* Build configuration list for PBXProject "Curverter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC26670A1F988C6200A519B4 /* Debug */,
+				CC26670B1F988C6200A519B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC26670C1F988C6200A519B4 /* Build configuration list for PBXNativeTarget "Curverter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC26670D1F988C6200A519B4 /* Debug */,
+				CC26670E1F988C6200A519B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC26670F1F988C6200A519B4 /* Build configuration list for PBXNativeTarget "CurverterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC2667101F988C6200A519B4 /* Debug */,
+				CC2667111F988C6200A519B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CC2666E71F988C6200A519B4 /* Project object */;
+}
