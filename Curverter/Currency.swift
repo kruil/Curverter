@@ -10,6 +10,7 @@ import Foundation
 
 
 class Currency: NSObject, NSCoding{
+    
     var code = ""
     var name = ""
     var rate:Double = 0
