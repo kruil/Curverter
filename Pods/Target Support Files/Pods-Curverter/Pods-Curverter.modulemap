@@ -1,0 +1,6 @@
+framework module Pods_Curverter {
+  umbrella header "Pods-Curverter-umbrella.h"
+
+  export *
+  module * { export * }
+}
