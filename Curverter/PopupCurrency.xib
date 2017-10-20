@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PopupCurrency" customModule="Curverter" customModuleProvider="target">
+            <connections>
+                <outlet property="pickerView" destination="ZIe-c0-E0t" id="Kub-2f-8rF"/>
+                <outlet property="view" destination="PN3-OM-Etv" id="MJb-aP-WdA"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" id="PN3-OM-Etv">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Chm-c4-FFU">
+                    <rect key="frame" x="16" y="213.5" width="343" height="240"/>
+                    <subviews>
+                        <stackView contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="s2S-tG-Cha">
+                            <rect key="frame" x="5" y="5" width="333" height="225"/>
+                            <subviews>
+                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZIe-c0-E0t">
+                                    <rect key="frame" x="0.0" y="0.0" width="333" height="185"/>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="Jis-Mg-PYH"/>
+                                        <outlet property="delegate" destination="-1" id="UTD-21-ApW"/>
+                                    </connections>
+                                </pickerView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBr-uE-vPj">
+                                    <rect key="frame" x="0.0" y="185" width="333" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="PpH-YE-sJ5"/>
+                                    </constraints>
+                                    <state key="normal" title="OK"/>
+                                    <connections>
+                                        <action selector="onOkTap:" destination="-1" eventType="touchUpInside" id="JAU-v4-QHk"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.52733631979999995" green="0.79679404149999999" blue="0.17216847029999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="s2S-tG-Cha" secondAttribute="bottom" constant="10" id="6cf-pe-K8q"/>
+                        <constraint firstItem="s2S-tG-Cha" firstAttribute="top" secondItem="Chm-c4-FFU" secondAttribute="top" constant="5" id="AGl-md-4ZM"/>
+                        <constraint firstAttribute="trailing" secondItem="s2S-tG-Cha" secondAttribute="trailing" constant="5" id="Poo-fn-PMy"/>
+                        <constraint firstAttribute="height" constant="240" id="Qaf-ZL-rCC"/>
+                        <constraint firstItem="s2S-tG-Cha" firstAttribute="leading" secondItem="Chm-c4-FFU" secondAttribute="leading" constant="5" id="kUJ-Jn-chT"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Chm-c4-FFU" firstAttribute="leading" secondItem="PN3-OM-Etv" secondAttribute="leadingMargin" id="Esg-Mh-QoU"/>
+                <constraint firstAttribute="trailingMargin" secondItem="Chm-c4-FFU" secondAttribute="trailing" id="KOl-aB-cSs"/>
+                <constraint firstItem="Chm-c4-FFU" firstAttribute="centerY" secondItem="PN3-OM-Etv" secondAttribute="centerY" id="QQ9-dx-zpL"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="qSO-Di-Ubt"/>
+            <point key="canvasLocation" x="33.5" y="124.5"/>
+        </view>
+    </objects>
+</document>

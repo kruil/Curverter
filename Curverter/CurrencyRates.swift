@@ -30,6 +30,17 @@ class CurrencyRates: NSObject, NSCoding {
     
     
     
+    static func getCurrencyPosition(currency:Currency) -> Int?{
+        for (index,c) in Self.currencies.enumerated() {
+            if c == currency {
+                return index
+            }
+        }
+        return nil
+    }
+    
+    
+    
     static func update(){
         print("Starting to update currency rates...")
         let queue = DispatchQueue.global(qos: .default)
@@ -57,10 +68,10 @@ class CurrencyRates: NSObject, NSCoding {
     }
     
     
-    static func convert(sum:Int64, from:String, to:String) -> Int64 {
-        if (from == to) {return sum;}
-        let result = Double(sum) * getRate(to)! / getRate(from)!
-        return Int64(result)
+    static func convert(amount:Double, from:String, to:String) -> Double {
+        if (from == to) {return amount;}
+        let result = Double(amount) * getRate(to)! / getRate(from)!
+        return result.roundTo(places: 2)
     }
     
     
