@@ -52,9 +52,6 @@ class Helper {
         //add spaces:
         var separatorPosition:Int! = text.indexOfCharacter(char: decimalSeparator.first!)
         if (separatorPosition == nil) {separatorPosition = text.characters.count}
-        else {
-            
-        }
         if (separatorPosition > 3) {
             text.insert(" ", at: text.index(text.startIndex, offsetBy: (separatorPosition - 3)))
         }

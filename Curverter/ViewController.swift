@@ -42,8 +42,8 @@ class ViewController: UIViewController, CurrencyPickerDelegate {
         CurrencyRates.update()
         Helper.addDoneToKeyTextFieldKeyboard(textField: textFieldFrom)
         Helper.addDoneToKeyTextFieldKeyboard(textField: textFieldTo)
-        currencyFrom = CurrencyRates.currencies[0]
-        currencyTo = CurrencyRates.currencies[1]
+        currencyFrom = CurrencyRates.getCurrency(code: "USD")
+        currencyTo = CurrencyRates.getCurrency(code: "SEK")
         butCurrencyFrom.setTitle(currencyFrom.name, for: .normal)
         butCurrencyTo.setTitle(currencyTo.name, for: .normal)
         textFieldFrom.text = "1"

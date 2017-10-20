@@ -26,11 +26,13 @@ class CurrencyRates: NSObject, NSCoding {
     
     static func setToDefault(){
         currencies.removeAll()
+        currencies.append(Currency("SEK", "Swedish Krona", 9.64))
+        currencies.append(Currency("RUB", "Russian ruble", 64.99))
         currencies.append(Currency("USD", "American dollar", 1.17))
         currencies.append(Currency("JPY", "Japanese yen", 132.17))
-        currencies.append(Currency("RUB", "Russian ruble", 64.99))
         currencies.append(Currency("THB", "Thai baht", 38.96))
         currencies.append(Currency("EUR", "Euro", 1))
+        currencies = currencies.sorted(by: { $0.code < $1.code })
     }
     
     
