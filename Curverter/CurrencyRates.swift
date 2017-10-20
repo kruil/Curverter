@@ -10,6 +10,7 @@ import Foundation
 import SwiftyJSON
 
 
+
 class CurrencyRates: NSObject, NSCoding {
     
     typealias `Self` = CurrencyRates
