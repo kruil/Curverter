@@ -17,7 +17,11 @@ class CurrencyRates: NSObject, NSCoding {
     static var currencies = [Currency]()
 
     
-    override init(){}
+    override init(){
+        if Self.currencies.count == 0 {
+            Self.setToDefault()
+        }
+    }
 
     
     static func setToDefault(){
@@ -64,7 +68,6 @@ class CurrencyRates: NSObject, NSCoding {
                 }
             }
             print("Currency rates was updated")
-            
         }
     }
     
@@ -73,6 +76,15 @@ class CurrencyRates: NSObject, NSCoding {
         if (from == to) {return amount;}
         let result = Double(amount) * getRate(to)! / getRate(from)!
         return result.roundTo(places: 2)
+    }
+    
+    
+    
+    static func getCurrencyByIndex(_ i: Int) -> Currency? {
+        if i > -1, i < CurrencyRates.currencies.count {
+            return CurrencyRates.currencies[i]
+        }
+        return nil
     }
     
     
