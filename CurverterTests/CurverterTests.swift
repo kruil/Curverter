@@ -7,37 +7,72 @@
 //
 
 import XCTest
+import UIKit
 @testable import Curverter
 
 class CurverterTests: XCTestCase {
     
+    var vc:ViewController!
+    
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        setUpViewControllers()
+    }
+    
+    
+    private func setUpViewControllers() {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        self.vc = storyboard.instantiateViewController(withIdentifier: "main") as! ViewController
+        self.vc.loadView()
+        self.vc.viewDidLoad()
     }
     
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        vc = nil
         super.tearDown()
     }
     
     
-    func test_InitialStateOfCurrencyRates() {
+    func testViewController() {
+        XCTAssertNotNil(self.vc, "Main view controller is nil")
+        XCTAssertNotNil(self.vc.butCurrencyFrom, "butCurrencyFrom is nil")
+        XCTAssertNotNil(self.vc.butCurrencyTo, "butCurrencyTo is nil")
+        XCTAssertNotNil(self.vc.textFieldTo, "textFieldTo is nil")
+        XCTAssertNotNil(self.vc.textFieldFrom, "textFieldFrom is nil")
+    }
+    
+    
+    func testInitialStateOfCurrencyRates() {
         let _ = CurrencyRates()
         XCTAssert(CurrencyRates.currencies.count > 0, "CurrencyRates dosn't have any currencies.")
     }
     
     
-    func test_EqualsCurrencyRate(){
+    func testEqualsCurrencyRate(){
         let cur1 = CurrencyRates.getCurrencyByIndex(0)!
         let r = CurrencyRates.convert(amount: 293, from: cur1.code, to: cur1.code)
         XCTAssert(r == 293, "Rate for same currencies not equal 1.")
     }
     
     
-    func test_getNoExistingCurrency() {
+    func testGetNonexistingCurrency() {
         XCTAssert(CurrencyRates.getCurrency(code: "---") == nil, "CurrencyRates return currency for nonexistent currency code.")
+    }
+    
+
+    func testGetRateOfNonexistingCurrency() {
+        XCTAssert(CurrencyRates.getRate("---") == nil, "CurrencyRates return rate for nonexistent currency code.")
+    }
+    
+    
+    func testCheckInput() {
+        XCTAssert(Helper.checkInput(input: "") == "", "Helper.checkInput wrong")
+        XCTAssert(Helper.checkInput(input: ".") == "0.", "Helper.checkInput wrong")
+        XCTAssert(Helper.checkInput(input: "LETTERS") == "", "Helper.checkInput wrong")
+        XCTAssert(Helper.checkInput(input: "LETTERS AND 123.0") == "123.0", "Helper.checkInput wrong")
+        XCTAssert(Helper.checkInput(input: "1000000.324") == "1 000 000.32", "Helper.checkInput wrong")
     }
     
     

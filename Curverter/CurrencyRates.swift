@@ -53,6 +53,8 @@ class CurrencyRates: NSObject, NSCoding {
             let jsonRates = try? String(contentsOf: URL(string: "http://api.fixer.io/latest")!)
             if (jsonRates != nil){
                 parseJSON(jsonRates!)
+            } else {
+                print("It seems you don't have Internet connection")
             }
         }
     }

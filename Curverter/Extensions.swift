@@ -37,6 +37,11 @@ extension String {
     }
     
     
+    func removeLetters() -> String {
+        return self.components(separatedBy: CharacterSet.letters).joined()
+    }
+    
+    
     func countInstances(of stringToFind: String) -> Int {
         assert(!stringToFind.isEmpty)
         var searchRange: Range<String.Index>?

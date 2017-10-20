@@ -13,8 +13,6 @@ class Helper {
     
     static func addDoneToKeyTextFieldKeyboard(textField:UITextField) {
         let keyboardToolbar = UIToolbar()
-        //keyboardToolbar.barStyle = Style.uiBarStyle
-        //keyboardToolbar.tintColor = Style.colorTint
         keyboardToolbar.sizeToFit()
         let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
                                             target: nil, action: nil)
@@ -23,6 +21,8 @@ class Helper {
         keyboardToolbar.items = [flexBarButton, doneBarButton]
         textField.inputAccessoryView = keyboardToolbar
     }
+    
+    
     
     static func inputToDouble(input:String) -> Double {
         guard !input.isEmpty else {return 0}
@@ -35,6 +35,7 @@ class Helper {
     
     static func checkInput(input:String) -> String {
         var text:String = input.replacingOccurrences(of: " ", with:  "")
+        text = text.removeLetters()
         text = text.replacingOccurrences(of: ",", with:  ".")
         let decimalSeparator = "."
         if (text.countInstances(of: decimalSeparator) > 1) {
