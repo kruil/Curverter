@@ -52,7 +52,7 @@ class PopupCurrency: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return CurrencyRates.currencies.count
+        return CurrencyRates.currencyCount()
     }
     
     
@@ -62,16 +62,18 @@ class PopupCurrency: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let strTitle = CurrencyRates.currencies[row].code + ", " + CurrencyRates.currencies[row].name
-        let attString = NSAttributedString(string: strTitle, attributes: [NSAttributedStringKey.foregroundColor : UIColor.black])
-        return attString
+        if let currency = CurrencyRates.getCurrencyByIndex(row) {
+            let strTitle = currency.code + ", " + currency.name
+            let attString = NSAttributedString(string: strTitle, attributes: [NSAttributedStringKey.foregroundColor : UIColor.black])
+            return attString
+        }
+        return nil
     }
     
     
     @IBAction func onOkTap(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
-        if let d = delegate {
-            let selectedCurrency = CurrencyRates.currencies[pickerView.selectedRow(inComponent: 0)]
+        if let d = delegate, let selectedCurrency = CurrencyRates.getCurrencyByIndex(pickerView.selectedRow(inComponent: 0)) {
             d.onCurrencySelected(selectedCurrency)
         }
     }

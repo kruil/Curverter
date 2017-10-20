@@ -30,28 +30,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
-    var filePath: String {
+    var dataSavingFilePath: String {
         let manager = FileManager.default
         let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first
-        return (url!.appendingPathComponent("Data1").path)
+        return (url!.appendingPathComponent("Curvertor").path)
     }
     
     
     func loadData(){
         print("Loading data...")
-        if let _ = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? CurrencyRates {
+        if let _ = NSKeyedUnarchiver.unarchiveObject(withFile: dataSavingFilePath) as? CurrencyRates {
             print("loaded")
         } else {
-            CurrencyRates.setToDefault()
-            print("setToDefault")
+            let _ = CurrencyRates()
         }
-        print(CurrencyRates.currencies.count)
         print("end of loading.")
     }
     
     
     func saveData(){
-        NSKeyedArchiver.archiveRootObject(CurrencyRates(), toFile: filePath)
+        NSKeyedArchiver.archiveRootObject(CurrencyRates(), toFile: dataSavingFilePath)
     }
 
     
@@ -61,12 +59,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
     
 
     func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
 

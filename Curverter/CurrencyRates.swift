@@ -11,27 +11,51 @@ import SwiftyJSON
 
 
 
-class CurrencyRates: NSObject, NSCoding {
+final class CurrencyRates: NSObject, NSCoding {
     
-    typealias `Self` = CurrencyRates
-    static var currencies = [Currency]()
-
+    private typealias `Self` = CurrencyRates
+    
+    private static var autoUpdateInterval:Double = 60
+    private static var currencies = [Currency]()
+    private static var timer = Timer()
+    
+    
     
     override init(){
-        if Self.currencies.count == 0 {
-            Self.setToDefault()
+        super.init()
+        if Self.currencies.count == 0 { Self.setToDefault() }
+        Self.startUpdating()
+    }
+    
+    
+    func setUpdateInteval(seconds:inout Double) {
+        if seconds < 10 {
+            seconds = 10
         }
+        Self.autoUpdateInterval = seconds
+    }
+    
+    
+    static private func startUpdating() {
+        Self.timer = Timer.scheduledTimer(timeInterval: Self.autoUpdateInterval, target: self, selector: #selector(Self.onTimerTick), userInfo: nil, repeats: true)
+    }
+    
+    
+    
+    @objc static func onTimerTick(){
+        update()
     }
 
     
-    static func setToDefault(){
+    
+    private static func setToDefault(){
         currencies.removeAll()
-        currencies.append(Currency("SEK", "Swedish Krona", 9.64))
-        currencies.append(Currency("RUB", "Russian ruble", 64.99))
-        currencies.append(Currency("USD", "American dollar", 1.17))
-        currencies.append(Currency("JPY", "Japanese yen", 132.17))
-        currencies.append(Currency("THB", "Thai baht", 38.96))
-        currencies.append(Currency("EUR", "Euro", 1))
+        currencies.append(Currency("SEK", "Swedish Krona", 9.64)!)
+        currencies.append(Currency("RUB", "Russian ruble", 64.99)!)
+        currencies.append(Currency("USD", "American dollar", 1.17)!)
+        currencies.append(Currency("JPY", "Japanese yen", 132.17)!)
+        currencies.append(Currency("THB", "Thai baht", 38.96)!)
+        currencies.append(Currency("EUR", "Euro", 1)!)
         currencies = currencies.sorted(by: { $0.code < $1.code })
     }
     
@@ -48,7 +72,7 @@ class CurrencyRates: NSObject, NSCoding {
     
     
     
-    static func update(){
+    private static func update(){
         print("Starting to update currency rates...")
         let queue = DispatchQueue.global(qos: .default)
         queue.async{
@@ -59,6 +83,12 @@ class CurrencyRates: NSObject, NSCoding {
                 print("It seems you don't have Internet connection")
             }
         }
+    }
+    
+    
+    
+    static func currencyCount() -> Int {
+        return currencies.count
     }
     
     
@@ -110,7 +140,9 @@ class CurrencyRates: NSObject, NSCoding {
     
     required init?(coder aDecoder: NSCoder) {
         if let o = aDecoder.decodeObject(forKey: "currencies") as? [Currency] {Self.currencies = o}
+        Self.startUpdating()
     }
+    
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(Self.currencies, forKey: "currencies")

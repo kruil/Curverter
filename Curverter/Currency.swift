@@ -9,7 +9,7 @@
 import Foundation
 
 
-class Currency: NSObject, NSCoding{
+final class Currency: NSObject, NSCoding{
     
     var code = ""
     var name = ""
@@ -17,7 +17,8 @@ class Currency: NSObject, NSCoding{
 
     
     
-    init(_ code:String,_ name:String,_ rate:Double){
+    init?(_ code:String,_ name:String,_ rate:Double){
+        guard code.characters.count == 3, rate > 0 else {return nil}
         self.code = code
         self.name = name
         self.rate = rate

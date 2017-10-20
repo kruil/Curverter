@@ -8,27 +8,25 @@
 
 import UIKit
 
+
+
 class ViewController: UIViewController, CurrencyPickerDelegate {
-    
-    
     
     @IBOutlet weak var butCurrencyFrom: UIButton!
     @IBOutlet weak var butCurrencyTo: UIButton!
     @IBOutlet weak var textFieldFrom: UITextField!
     @IBOutlet weak var textFieldTo: UITextField!
     
-    var pickerButton:UIButton?
+    private var pickerButton:UIButton?
     
-    var currencyFrom:Currency! {
+    private var currencyFrom:Currency! {
         didSet(a) {
             butCurrencyFrom.setTitle(currencyFrom.name, for: .normal)
             onSumChanged(textFieldFrom)
         }
     }
     
-    
-    
-    var currencyTo:Currency! {
+    private var currencyTo:Currency! {
         didSet(a) {
             butCurrencyTo.setTitle(currencyTo.name, for: .normal)
             onSumChanged(textFieldFrom)
@@ -39,7 +37,6 @@ class ViewController: UIViewController, CurrencyPickerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        CurrencyRates.update()
         Helper.addDoneToKeyTextFieldKeyboard(textField: textFieldFrom)
         Helper.addDoneToKeyTextFieldKeyboard(textField: textFieldTo)
         currencyFrom = CurrencyRates.getCurrency(code: "USD")
@@ -84,7 +81,7 @@ class ViewController: UIViewController, CurrencyPickerDelegate {
     
     
     
-    func onCurrencySelected(_ newCurrency: Currency) {
+    internal func onCurrencySelected(_ newCurrency: Currency) {
         if pickerButton == butCurrencyFrom {
             currencyFrom = newCurrency
         } else {
@@ -97,7 +94,6 @@ class ViewController: UIViewController, CurrencyPickerDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 
