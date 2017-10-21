@@ -10,21 +10,18 @@ import Foundation
 
 
 final class Currency: NSObject, NSCoding{
-    
+    //MARK: - Properties
     var code = ""
     var name = ""
     var rate:Double = 0
-
     
-    
+    //MARK: -
     init?(_ code:String,_ name:String,_ rate:Double){
         guard code.characters.count == 3, rate > 0 else {return nil}
         self.code = code
         self.name = name
         self.rate = rate
     }
-    
-    
     
     public required init?(coder aDecoder: NSCoder) {
         if let o = aDecoder.decodeObject(forKey: "name") as? String {name = o}

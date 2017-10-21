@@ -14,14 +14,16 @@ protocol CurrencyPickerDelegate {
     func onCurrencySelected(_ newCurrency:Currency)
 }
 
+//MARK: -
 
-
-class PopupCurrency: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-
+class PopupCurrency: UIViewController {
+    
+    //MARK: Properties
     @IBOutlet weak var pickerView: UIPickerView!
     var delegate:CurrencyPickerDelegate?
     var selectedCurrency:Currency?
     
+    //MARK: -
     
     init(delegate:CurrencyPickerDelegate, currentCurrency:Currency) {
         super.init(nibName: nil, bundle: nil)
@@ -30,19 +32,11 @@ class PopupCurrency: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         selectedCurrency = currentCurrency
     }
     
-    
-    private func setInitialSelectionTo(_ currency:Currency) {
-        if let positionToSelect = CurrencyRates.getCurrencyPosition(currency: currency) {
-            pickerView.selectRow(positionToSelect, inComponent: 0, animated: false)
-        }
-    }
-    
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    
+    //MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
         if let s = selectedCurrency {
@@ -50,17 +44,38 @@ class PopupCurrency: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         }
     }
     
+    private func setInitialSelectionTo(_ currency:Currency) {
+        if let positionToSelect = CurrencyRates.getCurrencyPosition(currency: currency) {
+            pickerView.selectRow(positionToSelect, inComponent: 0, animated: false)
+        }
+    }
+    
+    @IBAction func onOkTap(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+        if let delegate = delegate, let selectedCurrency = CurrencyRates.getCurrencyByIndex(pickerView.selectedRow(inComponent: 0)) {
+            delegate.onCurrencySelected(selectedCurrency)
+        }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+
+//MARK: -
+extension PopupCurrency: UIPickerViewDataSource{
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return CurrencyRates.currencyCount()
     }
     
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    
-    
+}
+
+//MARK: -
+extension PopupCurrency: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         if let currency = CurrencyRates.getCurrencyByIndex(row) {
             let strTitle = currency.code + ", " + currency.name
@@ -69,30 +84,4 @@ class PopupCurrency: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         }
         return nil
     }
-    
-    
-    @IBAction func onOkTap(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-        if let d = delegate, let selectedCurrency = CurrencyRates.getCurrencyByIndex(pickerView.selectedRow(inComponent: 0)) {
-            d.onCurrencySelected(selectedCurrency)
-        }
-    }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

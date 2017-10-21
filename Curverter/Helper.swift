@@ -11,7 +11,7 @@ import UIKit
 
 class Helper {
     
-    static func addDoneToKeyTextFieldKeyboard(textField:UITextField) {
+    static func addDoneToTextFieldKeyboard(textField:UITextField) {
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()
         let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
@@ -22,8 +22,6 @@ class Helper {
         textField.inputAccessoryView = keyboardToolbar
     }
     
-    
-    
     static func inputToDouble(input:String) -> Double {
         guard !input.isEmpty else {return 0}
         var result = input
@@ -31,37 +29,53 @@ class Helper {
         return Double(result)!
     }
     
-    
-    
-    static func checkInput(input:String) -> String {
-        var text:String = input.replacingOccurrences(of: " ", with:  "")
-        text = text.removeLetters()
-        text = text.replacingOccurrences(of: ",", with:  ".")
-        let decimalSeparator = "."
-        if (text.countInstances(of: decimalSeparator) > 1) {
-            text = String(text.dropLast())
+    static func checkForDecimalInput(input:String) -> String {
+        //MARK:  Filter input from wrong characters and format it
+        
+        func filterWrongCharacters(text:String) -> String {
+            var result = text.replacingOccurrences(of: " ", with: "")
+            result = result.removeLetters()
+            result = result.replacingOccurrences(of: ",", with: Constants.decimalSeparator)
+            if (result.countInstances(of: Constants.decimalSeparator) > 1) {
+                result = String(result.dropLast())
+            }
+            return result
         }
-        if (text == decimalSeparator) {
-            text = "0" + text
+        
+        func AddSpacesToNumberString(text:String) -> String {
+            var result = text
+            var separatorPosition:Int! = result.indexOfCharacter(char: Constants.decimalSeparator.first!)
+            if (separatorPosition == nil) {separatorPosition = result.characters.count}
+            if (separatorPosition > 3) { result.insert(" ", at: result.index(result.startIndex, offsetBy: (separatorPosition - 3))) }
+            if (separatorPosition > 6) { result.insert(" ", at: result.index(result.startIndex, offsetBy: (separatorPosition - 6))) }
+            if (separatorPosition > 9) { result.insert(" ", at: result.index(result.startIndex, offsetBy: (separatorPosition - 9))) }
+            return result
         }
-        if (text.characters.count > 3) {
-            if (text[text.characters.count - 4] == decimalSeparator) {
-                text = String(text.dropLast())
+        
+        var result = filterWrongCharacters(text:input)
+        if (result == Constants.decimalSeparator) {
+            result = "0" + result
+        }
+        if (result.characters.count > 3) {
+            if (result[result.characters.count - 4] == Constants.decimalSeparator) {
+                result = String(result.dropLast())
             }
         }
         //add spaces:
-        var separatorPosition:Int! = text.indexOfCharacter(char: decimalSeparator.first!)
-        if (separatorPosition == nil) {separatorPosition = text.characters.count}
-        if (separatorPosition > 3) {
-            text.insert(" ", at: text.index(text.startIndex, offsetBy: (separatorPosition - 3)))
-        }
-        if (separatorPosition > 6) {
-            text.insert(" ", at: text.index(text.startIndex, offsetBy: (separatorPosition - 6)))
-        }
-        if (separatorPosition > 9) {
-            text.insert(" ", at: text.index(text.startIndex, offsetBy: (separatorPosition - 9)))
-        }
-        return text
+        result = AddSpacesToNumberString(text: result)
+        return result
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+

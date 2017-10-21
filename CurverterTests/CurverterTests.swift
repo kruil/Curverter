@@ -37,22 +37,22 @@ class CurverterTests: XCTestCase {
     
     func testViewController() {
         XCTAssertNotNil(self.vc, "Main view controller is nil")
-        XCTAssertNotNil(self.vc.butCurrencyFrom, "butCurrencyFrom is nil")
-        XCTAssertNotNil(self.vc.butCurrencyTo, "butCurrencyTo is nil")
-        XCTAssertNotNil(self.vc.textFieldTo, "textFieldTo is nil")
-        XCTAssertNotNil(self.vc.textFieldFrom, "textFieldFrom is nil")
+        XCTAssertNotNil(self.vc.butSelectCurrency1, "butCurrencyFrom is nil")
+        XCTAssertNotNil(self.vc.butSelectCurrency2, "butCurrencyTo is nil")
+        XCTAssertNotNil(self.vc.textFieldAmount1, "textFieldTo is nil")
+        XCTAssertNotNil(self.vc.textFieldAmount2, "textFieldFrom is nil")
     }
     
     
     func testInitialStateOfCurrencyRates() {
         let _ = CurrencyRates()
-        XCTAssert(CurrencyRates.currencies.count > 0, "CurrencyRates dosn't have any currencies.")
+        XCTAssert(CurrencyRates.currencyCount() > 0, "CurrencyRates dosn't have any currencies.")
     }
     
     
     func testEqualsCurrencyRate(){
         let cur1 = CurrencyRates.getCurrencyByIndex(0)!
-        let r = CurrencyRates.convert(amount: 293, from: cur1.code, to: cur1.code)
+        let r = CurrencyRates.convert(amount: 293, from: cur1, to: cur1)
         XCTAssert(r == 293, "Rate for same currencies not equal 1.")
     }
     
@@ -61,18 +61,13 @@ class CurverterTests: XCTestCase {
         XCTAssert(CurrencyRates.getCurrency(code: "---") == nil, "CurrencyRates return currency for nonexistent currency code.")
     }
     
-
-    func testGetRateOfNonexistingCurrency() {
-        XCTAssert(CurrencyRates.getRate("---") == nil, "CurrencyRates return rate for nonexistent currency code.")
-    }
-    
     
     func testCheckInput() {
-        XCTAssert(Helper.checkInput(input: "") == "", "Helper.checkInput wrong")
-        XCTAssert(Helper.checkInput(input: ".") == "0.", "Helper.checkInput wrong")
-        XCTAssert(Helper.checkInput(input: "LETTERS") == "", "Helper.checkInput wrong")
-        XCTAssert(Helper.checkInput(input: "LETTERS AND 123.0") == "123.0", "Helper.checkInput wrong")
-        XCTAssert(Helper.checkInput(input: "1000000.324") == "1 000 000.32", "Helper.checkInput wrong")
+        XCTAssert(Helper.checkForDecimalInput(input: "") == "", "Helper.checkInput wrong")
+        XCTAssert(Helper.checkForDecimalInput(input: ".") == "0.", "Helper.checkInput wrong")
+        XCTAssert(Helper.checkForDecimalInput(input: "LETTERS") == "", "Helper.checkInput wrong")
+        XCTAssert(Helper.checkForDecimalInput(input: "LETTERS AND 123.0") == "123.0", "Helper.checkInput wrong")
+        XCTAssert(Helper.checkForDecimalInput(input: "1000000.324") == "1 000 000.32", "Helper.checkInput wrong")
     }
     
     

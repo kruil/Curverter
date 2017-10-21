@@ -20,17 +20,17 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="8ws-Zx-YH4">
                                 <rect key="frame" x="8" y="40" width="304" height="264"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJz-Ki-1UE" userLabel="butCurrencyFrom">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJz-Ki-1UE" userLabel="butCurrency1">
                                         <rect key="frame" x="0.0" y="0.0" width="304" height="39"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="EURO">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="onCurrencyTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U8c-5X-DD9"/>
+                                            <action selector="selectNewCurrency:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U8c-5X-DD9"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HcS-Bu-22b" userLabel="sumFrom">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HcS-Bu-22b" userLabel="tfAmount1">
                                         <rect key="frame" x="0.0" y="46" width="304" height="64"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
@@ -45,7 +45,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="11.22" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3RC-0g-kEr" userLabel="sumTo">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="11.22" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3RC-0g-kEr" userLabel="tfAmount2">
                                         <rect key="frame" x="0.0" y="154" width="304" height="64"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
@@ -54,14 +54,14 @@
                                             <action selector="onSumChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="BdD-l0-5Cu"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1f-jQ-1JA" userLabel="butCurrencyTo">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1f-jQ-1JA" userLabel="butCurrency2">
                                         <rect key="frame" x="0.0" y="225" width="304" height="39"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Russian ruble">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="onCurrencyTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="I6P-VD-y1V"/>
+                                            <action selector="selectNewCurrency:" destination="BYZ-38-t0r" eventType="touchUpInside" id="I6P-VD-y1V"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -82,10 +82,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="butCurrencyFrom" destination="CJz-Ki-1UE" id="AdR-Y4-gR5"/>
-                        <outlet property="butCurrencyTo" destination="J1f-jQ-1JA" id="6Ys-8S-IGA"/>
-                        <outlet property="textFieldFrom" destination="HcS-Bu-22b" id="apN-IM-paq"/>
-                        <outlet property="textFieldTo" destination="3RC-0g-kEr" id="DMU-cX-Sjq"/>
+                        <outlet property="butSelectCurrency1" destination="CJz-Ki-1UE" id="UVI-26-xyB"/>
+                        <outlet property="butSelectCurrency2" destination="J1f-jQ-1JA" id="AIz-1A-VKn"/>
+                        <outlet property="textFieldAmount1" destination="HcS-Bu-22b" id="T4V-rT-d7a"/>
+                        <outlet property="textFieldAmount2" destination="3RC-0g-kEr" id="ArK-5T-2V2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

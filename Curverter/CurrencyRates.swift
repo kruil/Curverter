@@ -15,51 +15,54 @@ final class CurrencyRates: NSObject, NSCoding {
     
     private typealias `Self` = CurrencyRates
     
-    private static var autoUpdateInterval:Double = 60
+    //MARK: - Properties
+    private static var updateInterval:Double = 60 // in seconds
     private static var currencies = [Currency]()
     private static var timer = Timer()
     
-    
-    
+    //MARK: - initializators
     override init(){
         super.init()
-        if Self.currencies.count == 0 { Self.setToDefault() }
+        if Self.currencies.count == 0 { Self.setToDefaultRates() }
         Self.startUpdating()
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        if let o = aDecoder.decodeObject(forKey: "currencies") as? [Currency] {Self.currencies = o}
+        Self.startUpdating()
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(Self.currencies, forKey: "currencies")
+    }
+    
+    //MARK: - public methods
+    static func convert(amount:Double, from:Currency, to:Currency) -> Double {
+        if (from == to) {return amount;}
+        let result = Double(amount) * to.rate / from.rate
+        return result.roundTo(places: 2)
+    }
+    
+    static func getCurrencyByIndex(_ i: Int) -> Currency? {
+        if i > -1, i < CurrencyRates.currencies.count {
+            return CurrencyRates.currencies[i]
+        }
+        return nil
+    }
+    
+    static func getCurrency(code:String) -> Currency? {
+        for c in currencies {
+            if (c.code == code) {return c}
+        }
+        return nil
+    }
     
     func setUpdateInteval(seconds:inout Double) {
         if seconds < 10 {
             seconds = 10
         }
-        Self.autoUpdateInterval = seconds
+        Self.updateInterval = seconds
     }
-    
-    
-    static private func startUpdating() {
-        Self.timer = Timer.scheduledTimer(timeInterval: Self.autoUpdateInterval, target: self, selector: #selector(Self.onTimerTick), userInfo: nil, repeats: true)
-    }
-    
-    
-    
-    @objc static func onTimerTick(){
-        update()
-    }
-
-    
-    
-    private static func setToDefault(){
-        currencies.removeAll()
-        currencies.append(Currency("SEK", "Swedish Krona", 9.64)!)
-        currencies.append(Currency("RUB", "Russian ruble", 64.99)!)
-        currencies.append(Currency("USD", "American dollar", 1.17)!)
-        currencies.append(Currency("JPY", "Japanese yen", 132.17)!)
-        currencies.append(Currency("THB", "Thai baht", 38.96)!)
-        currencies.append(Currency("EUR", "Euro", 1)!)
-        currencies = currencies.sorted(by: { $0.code < $1.code })
-    }
-    
-    
     
     static func getCurrencyPosition(currency:Currency) -> Int?{
         for (index,c) in Self.currencies.enumerated() {
@@ -70,13 +73,35 @@ final class CurrencyRates: NSObject, NSCoding {
         return nil
     }
     
+    static func currencyCount() -> Int {
+        return currencies.count
+    }
     
+    //MARK: - private methods
+    private static func setToDefaultRates(){
+        currencies.removeAll()
+        currencies.append(Currency("SEK", "Swedish Krona", 9.64)!)
+        currencies.append(Currency("RUB", "Russian ruble", 64.99)!)
+        currencies.append(Currency("USD", "American dollar", 1.17)!)
+        currencies.append(Currency("JPY", "Japanese yen", 132.17)!)
+        currencies.append(Currency("THB", "Thai baht", 38.96)!)
+        currencies.append(Currency("EUR", "Euro", 1)!)
+        currencies = currencies.sorted(by: { $0.code < $1.code })
+    }
+    
+    @objc private static func onTimerTick(){
+        update()
+    }
+    
+    static private func startUpdating() {
+        Self.timer = Timer.scheduledTimer(timeInterval: Self.updateInterval, target: self, selector: #selector(Self.onTimerTick), userInfo: nil, repeats: true)
+    }
     
     private static func update(){
         print("Starting to update currency rates...")
         let queue = DispatchQueue.global(qos: .default)
         queue.async{
-            let jsonRates = try? String(contentsOf: URL(string: "http://api.fixer.io/latest")!)
+            let jsonRates = try? String(contentsOf: URL(string: Constants.apiURL)!)
             if (jsonRates != nil){
                 parseJSON(jsonRates!)
             } else {
@@ -84,14 +109,6 @@ final class CurrencyRates: NSObject, NSCoding {
             }
         }
     }
-    
-    
-    
-    static func currencyCount() -> Int {
-        return currencies.count
-    }
-    
-    
     
     private static func parseJSON(_ dataString:String){
         if let dataFromString = dataString.data(using: .utf8, allowLossyConversion: false) {
@@ -105,47 +122,5 @@ final class CurrencyRates: NSObject, NSCoding {
         }
     }
     
-    
-    static func convert(amount:Double, from:String, to:String) -> Double {
-        if (from == to) {return amount;}
-        let result = Double(amount) * getRate(to)! / getRate(from)!
-        return result.roundTo(places: 2)
-    }
-    
-    
-    
-    static func getCurrencyByIndex(_ i: Int) -> Currency? {
-        if i > -1, i < CurrencyRates.currencies.count {
-            return CurrencyRates.currencies[i]
-        }
-        return nil
-    }
-    
-    
-    
-    static func getRate(_ code:String) -> Double? {
-        return getCurrency(code: code)?.rate
-    }
-    
-    
-    
-    static func getCurrency(code:String) -> Currency? {
-        for c in currencies {
-            if (c.code == code) {return c}
-        }
-        return nil
-    }
-
-    
-    
-    required init?(coder aDecoder: NSCoder) {
-        if let o = aDecoder.decodeObject(forKey: "currencies") as? [Currency] {Self.currencies = o}
-        Self.startUpdating()
-    }
-    
-    
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(Self.currencies, forKey: "currencies")
-    }
-    
 }
+
