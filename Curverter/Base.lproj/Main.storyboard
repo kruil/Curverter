@@ -30,7 +30,7 @@
                                             <action selector="selectNewCurrency:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U8c-5X-DD9"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HcS-Bu-22b" userLabel="tfAmount1">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HcS-Bu-22b" userLabel="tfAmount1" customClass="DecimalTextField" customModule="Curverter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="46" width="304" height="64"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>
@@ -45,7 +45,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="11.22" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3RC-0g-kEr" userLabel="tfAmount2">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="11.22" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3RC-0g-kEr" userLabel="tfAmount2" customClass="DecimalTextField" customModule="Curverter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="154" width="304" height="64"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="50"/>

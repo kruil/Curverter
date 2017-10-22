@@ -8,16 +8,13 @@
 
 import UIKit
 
-
-
 class ViewController: UIViewController {
     
     //MARK: - Properties
     @IBOutlet weak var butSelectCurrency1: UIButton!
     @IBOutlet weak var butSelectCurrency2: UIButton!
-    @IBOutlet weak var textFieldAmount1: UITextField!
-    @IBOutlet weak var textFieldAmount2: UITextField!
-    
+    @IBOutlet weak var textFieldAmount1: DecimalTextField!
+    @IBOutlet weak var textFieldAmount2: DecimalTextField!
     private var currencyPickerButton:UIButton?
     
     private var currency1:Currency! {
@@ -41,32 +38,25 @@ class ViewController: UIViewController {
         currency2 = CurrencyRates.getCurrency(code: "SEK")
         butSelectCurrency1.setTitle(currency1.name, for: .normal)
         butSelectCurrency2.setTitle(currency2.name, for: .normal)
-        Helper.addDoneToTextFieldKeyboard(textField: textFieldAmount1)
-        Helper.addDoneToTextFieldKeyboard(textField: textFieldAmount2)
         textFieldAmount1.text = "1"
         onSumChanged(textFieldAmount1)
     }
     
-    @IBAction func onSumChanged(_ sender: UITextField) {
+    @IBAction func onSumChanged(_ sender: DecimalTextField) {
         guard currency1 != nil, currency2 != nil else { return }
+        let amount = sender.amount
+        var textFieldToChange:DecimalTextField!
         if sender == textFieldAmount1 {
-            updateTextField(changedTextField: textFieldAmount1, textFieldToChange: textFieldAmount2)
+            textFieldToChange = textFieldAmount2
         }
         else {
-            updateTextField(changedTextField: textFieldAmount2, textFieldToChange: textFieldAmount1)
+            textFieldToChange = textFieldAmount1
         }
+        let convertedAmount = CurrencyRates.convert(amount: amount, from: getCurrencyFor(view: sender), to: getCurrencyFor(view: textFieldToChange))
+        textFieldToChange.amount = convertedAmount
     }
     
-    func updateTextField(changedTextField:UITextField, textFieldToChange:UITextField){
-        changedTextField.text = Helper.checkForDecimalInput(input: changedTextField.text!)
-        let amount = Helper.inputToDouble(input: changedTextField.text!)
-        let convertedAmount = CurrencyRates.convert(amount: amount,
-                                                    from: getCurrencyFor(view: changedTextField),
-                                                    to: getCurrencyFor(view: textFieldToChange))
-        textFieldToChange.text = Helper.checkForDecimalInput(input: String(convertedAmount))
-    }
-    
-    func getCurrencyFor(view:UIView) -> Currency{
+    func getCurrencyFor(view:UIView) -> Currency {
         if view == textFieldAmount1 || view == butSelectCurrency1 {
             return currency1
         } else {
@@ -76,13 +66,8 @@ class ViewController: UIViewController {
     
     @IBAction func selectNewCurrency(_ sender: UIButton) {
         currencyPickerButton = sender
-        let currencyToChange = getCurrencyFor(view: sender)
-        present(PopupCurrency(delegate: self, currentCurrency:currencyToChange), animated: true, completion: nil)
+        present(PopupCurrency(delegate: self, currentCurrency: getCurrencyFor(view: sender)), animated: true, completion: nil)
         UIView.animate(withDuration: 0.5, animations: { self.view.alpha = 0.8 }) // shade view controller
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 }
 

@@ -1,35 +1,54 @@
 //
-//  Util.swift
+//  DecimalTextView.swift
 //  Curverter
 //
-//  Created by Илья Крупко on 19.10.17.
+//  Created by Илья Крупко on 22.10.17.
 //  Copyright © 2017 Илья Крупко. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class Helper {
+class DecimalTextField: UITextField {
     
-    static func addDoneToTextFieldKeyboard(textField:UITextField) {
+    var amount:Double {
+        set (value) {
+            text = checkForDecimalInput(input: String(value))
+        }
+        get{
+            return inputToDouble(input: text!) ?? 0.0
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        addTarget(self, action: #selector(DecimalTextField.formatText), for: .editingChanged)
+        keyboardType = .decimalPad
+        addDoneKeyToKeyboard()
+    }
+    
+    func addDoneKeyToKeyboard(){
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()
-        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
-                                            target: nil, action: nil)
-        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done,
-                                            target: textField, action: #selector(UIView.endEditing(_:)))
+        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(UIView.endEditing(_:)))
         keyboardToolbar.items = [flexBarButton, doneBarButton]
-        textField.inputAccessoryView = keyboardToolbar
+        self.inputAccessoryView = keyboardToolbar
     }
     
-    static func inputToDouble(input:String) -> Double {
-        guard !input.isEmpty else {return 0}
+    @objc func formatText() {
+        if let text = text {
+            self.text = checkForDecimalInput(input: text)
+        }
+    }
+    
+    func inputToDouble(input:String) -> Double? {
         var result = input
         result = result.replacingOccurrences(of: " ", with: "")
-        return Double(result)!
+        return Double(result)
     }
     
-    static func checkForDecimalInput(input:String) -> String {
+    func checkForDecimalInput(input:String) -> String {
         //MARK:  Filter input from wrong characters and format it
         
         func filterWrongCharacters(text:String) -> String {
@@ -52,6 +71,15 @@ class Helper {
             return result
         }
         
+        func checkEnd(text:String) -> String {
+            var result:String = text
+            if result.indexOfCharacter(char: ".") == result.characters.count - 2 {
+                result.append("0")
+            }
+            result = result.replacingOccurrences(of: ".00", with: "")
+            return result
+        }
+        
         var result = filterWrongCharacters(text:input)
         if (result == Constants.decimalSeparator) {
             result = "0" + result
@@ -61,18 +89,13 @@ class Helper {
                 result = String(result.dropLast())
             }
         }
-        //add spaces:
         result = AddSpacesToNumberString(text: result)
+        if self.isEditing == false {
+            result = checkEnd(text: result)
+        }
         return result
     }
-    
 }
-
-
-
-
-
-
 
 
 

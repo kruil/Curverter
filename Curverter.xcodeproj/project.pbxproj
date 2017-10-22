@@ -18,9 +18,9 @@
 		CC2667131F988DFA00A519B4 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2667121F988DFA00A519B4 /* Currency.swift */; };
 		CC2667161F988FB200A519B4 /* CurrencyRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2667151F988FB100A519B4 /* CurrencyRates.swift */; };
 		CC26671C1F9901B300A519B4 /* ExtensionDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC26671B1F9901B300A519B4 /* ExtensionDouble.swift */; };
-		CC26671E1F99343000A519B4 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC26671D1F99343000A519B4 /* Helper.swift */; };
 		CC2667211F9938EC00A519B4 /* PopupCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC26671F1F9938EC00A519B4 /* PopupCurrency.swift */; };
 		CC2667221F9938EC00A519B4 /* PopupCurrency.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC2667201F9938EC00A519B4 /* PopupCurrency.xib */; };
+		CC9D9A9F1F9D0F32001DA91F /* DecimalTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9D9A9E1F9D0F31001DA91F /* DecimalTextField.swift */; };
 		CCEB808D1F9A7E2400DD58C4 /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEB808C1F9A7E2400DD58C4 /* ExtensionString.swift */; };
 		D4716AD7ED9F8C44AFFA9B0B /* Pods_Curverter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C36568356660049D802DAA /* Pods_Curverter.framework */; };
 /* End PBXBuildFile section */
@@ -54,9 +54,9 @@
 		CC2667121F988DFA00A519B4 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		CC2667151F988FB100A519B4 /* CurrencyRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRates.swift; sourceTree = "<group>"; };
 		CC26671B1F9901B300A519B4 /* ExtensionDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDouble.swift; sourceTree = "<group>"; };
-		CC26671D1F99343000A519B4 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		CC26671F1F9938EC00A519B4 /* PopupCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupCurrency.swift; sourceTree = "<group>"; };
 		CC2667201F9938EC00A519B4 /* PopupCurrency.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupCurrency.xib; sourceTree = "<group>"; };
+		CC9D9A9E1F9D0F31001DA91F /* DecimalTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalTextField.swift; sourceTree = "<group>"; };
 		CCEB808C1F9A7E2400DD58C4 /* ExtensionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
 		D0C5676DCFE687530C522F31 /* Pods-CurverterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurverterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CurverterTests/Pods-CurverterTests.release.xcconfig"; sourceTree = "<group>"; };
 		E3C36568356660049D802DAA /* Pods_Curverter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Curverter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,9 +127,9 @@
 			children = (
 				CC2666FB1F988C6200A519B4 /* LaunchScreen.storyboard */,
 				CC2666F21F988C6200A519B4 /* AppDelegate.swift */,
+				CC24C56B1F9B350A0046C4C1 /* Constants.swift */,
 				CCEB80921F9A8DE700DD58C4 /* Views */,
 				CCEB808F1F9A8D0E00DD58C4 /* Controllers */,
-				CCEB80931F9A8E1400DD58C4 /* Helpers */,
 				CCEB80911F9A8D4B00DD58C4 /* Extensions */,
 				CC2667141F988E0100A519B4 /* DataModels */,
 				CC2666FE1F988C6200A519B4 /* Info.plist */,
@@ -161,6 +161,7 @@
 			children = (
 				CC2666F41F988C6200A519B4 /* ViewController.swift */,
 				CC26671F1F9938EC00A519B4 /* PopupCurrency.swift */,
+				CC9D9A9E1F9D0F31001DA91F /* DecimalTextField.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -181,15 +182,6 @@
 				CC2667201F9938EC00A519B4 /* PopupCurrency.xib */,
 			);
 			name = Views;
-			sourceTree = "<group>";
-		};
-		CCEB80931F9A8E1400DD58C4 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				CC26671D1F99343000A519B4 /* Helper.swift */,
-				CC24C56B1F9B350A0046C4C1 /* Constants.swift */,
-			);
-			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -396,12 +388,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC26671C1F9901B300A519B4 /* ExtensionDouble.swift in Sources */,
-				CC26671E1F99343000A519B4 /* Helper.swift in Sources */,
 				CC2666F51F988C6200A519B4 /* ViewController.swift in Sources */,
 				CC2667131F988DFA00A519B4 /* Currency.swift in Sources */,
 				CCEB808D1F9A7E2400DD58C4 /* ExtensionString.swift in Sources */,
 				CC2666F31F988C6200A519B4 /* AppDelegate.swift in Sources */,
 				CC2667161F988FB200A519B4 /* CurrencyRates.swift in Sources */,
+				CC9D9A9F1F9D0F32001DA91F /* DecimalTextField.swift in Sources */,
 				CC2667211F9938EC00A519B4 /* PopupCurrency.swift in Sources */,
 				CC24C56C1F9B350A0046C4C1 /* Constants.swift in Sources */,
 			);
