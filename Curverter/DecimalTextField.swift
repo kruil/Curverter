@@ -20,6 +20,13 @@ class DecimalTextField: UITextField {
         }
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addTarget(self, action: #selector(DecimalTextField.formatText), for: .editingChanged)
+        keyboardType = .decimalPad
+        addDoneKeyToKeyboard()
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         addTarget(self, action: #selector(DecimalTextField.formatText), for: .editingChanged)
@@ -27,7 +34,7 @@ class DecimalTextField: UITextField {
         addDoneKeyToKeyboard()
     }
     
-    func addDoneKeyToKeyboard(){
+    private func addDoneKeyToKeyboard(){
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()
         let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -42,13 +49,13 @@ class DecimalTextField: UITextField {
         }
     }
     
-    func inputToDouble(input:String) -> Double? {
+    private func inputToDouble(input:String) -> Double? {
         var result = input
         result = result.replacingOccurrences(of: " ", with: "")
         return Double(result)
     }
     
-    func checkForDecimalInput(input:String) -> String {
+    private func checkForDecimalInput(input:String) -> String {
         //MARK:  Filter input from wrong characters and format it
         
         func filterWrongCharacters(text:String) -> String {
